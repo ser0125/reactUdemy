@@ -15,13 +15,11 @@ class App extends Component {
 
   inputChangeEvent = (event) => {
     const newState = this.state.person.slice();
-    console.log(event.target.value);
     newState[0].username = event.target.value;
 
     this.setState({
       person: newState
-    });
-    console.log(this.state);
+    });   
   }
   style = {
     display: 'inline-block',
