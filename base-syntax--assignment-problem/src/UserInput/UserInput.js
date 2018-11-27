@@ -1,7 +1,7 @@
 import React from 'react'; 
 import './UserInput.css';
 
-const UserInput = (props) => {
+const userInput = (props) => {
 return (
     <div className="userInput">
     <input onChange={props.change} value={props.value}/>
@@ -10,4 +10,4 @@ return (
 }
 
 
-export default UserInput
+export default userInput
