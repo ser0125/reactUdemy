@@ -17,7 +17,6 @@ class App extends Component {
   removeChar = (index) => {
     let newValue = this.state.value.split('').slice();
     newValue.splice(index,1);
-    console.log(newValue.join(''));
     this.setState({
       value: newValue.join('')
     })
@@ -28,7 +27,7 @@ class App extends Component {
     charComponents = ( 
       <div>
       {this.state.value.split('').map((char, index) => {
-        return <CharComponent char={char} click={() => this.removeChar(index)}/>
+        return <CharComponent char={char} key={index} click={() => this.removeChar(index)}/>
       })}
       </div>
       )
