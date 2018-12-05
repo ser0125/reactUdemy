@@ -32,8 +32,8 @@ class App extends Component {
   }
   
   deletePersonHandler = (personIndex) => {
-    let newPersons = this.state.persons.slice;
-    this.state.newPersons.splice(personIndex,1);
+    let newPersons = this.state.persons.slice();
+    newPersons.splice(personIndex,1);
 
     this.setState({
       persons: newPersons
@@ -48,8 +48,9 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
       font: 'inherit',
+      color: 'white',
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer'
@@ -70,10 +71,20 @@ class App extends Component {
             })}
           </div>
         )
+        style.backgroundColor = 'red';
       }
+
+      const classes = [];
+      if(this.state.persons.length <= 2){
+        classes.push('red');
+      }if(this.state.persons.length <= 1){
+        classes.push('bold')
+      }
+
     return (
       <div className="App">
           <h1>Hi I'm a React App</h1>
+          <p className={classes.join(' ')}>This is really working</p>
           <button 
           style = {style}
           onClick={this.tooglePersonsHandler}>Show Name</button>    
