@@ -25,7 +25,8 @@ class BurgerBuilder extends Component {
                 meat: 0
             },
             totalPrice: 4,
-            purchasable: false
+            purchasable: false,
+            openModal: false
         }
         updatePurchase(ingredients) {
             const sum = Object.keys(ingredients).map(key => {
@@ -79,6 +80,19 @@ class BurgerBuilder extends Component {
           })
           this.updatePurchase(updatedIngredients);
         }
+        orderNow = () => {
+            this.setState({
+                openModal: true
+            });
+        }
+        closeModal = () => {
+            this.setState({
+                openModal: false
+            });
+        }
+        purchaseContinueHandler = () => {
+            alert('You continue!');
+        }
     render() {
         const disabledInfo = {
             ...this.state.ingredients
@@ -88,9 +102,13 @@ class BurgerBuilder extends Component {
         }
         return (
             <Aux>
-                <Modal>
-                <OrderSummary ingredients={this.state.ingredients}/>
-                </Modal>
+                <Modal show={this.state.openModal} modalClosed={this.closeModal}>
+                  <OrderSummary 
+                  ingredients={this.state.ingredients}
+                  purchaseCancelled= {this.closeModal}
+                  purchaseContinued ={this.purchaseContinueHandler}
+                  price={this.state.totalPrice}/>
+                 </Modal>
                 <Burger ingredients={this.state.ingredients}/>
                 <BurgerControls
                  ingredients={this.state.ingredients}
@@ -98,7 +116,8 @@ class BurgerBuilder extends Component {
                   ingredientRemoved={this.removeIngredientHandler}
                   disabled={disabledInfo}
                   totalPrice={this.state.totalPrice}
-                  purchasable={this.state.purchasable}/> 
+                  purchasable={this.state.purchasable}
+                  onClick={this.orderNow}/> 
             </Aux>
         );
     };
