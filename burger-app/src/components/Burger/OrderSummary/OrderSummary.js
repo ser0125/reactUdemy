@@ -3,11 +3,6 @@ import ReactAux from '../../../hoc/Auxiliar/ReactAux';
 import Button from '../../UI/Button/Button';
 
 class OrderSummary extends Component {
-    //This could be a functional component.
-    componentWillUpdate () {
-        console.log('[OrderSummary] Will update');
-        
-    }
     
     render () {        
     const ingredientSummary = Object.keys(this.props.ingredients)
