@@ -11,7 +11,7 @@ import * as actionTypes from '../../store/actions/index';
 import axios from '../../axios-order';
 
 
-class BurgerBuilder extends Component {
+export class BurgerBuilder extends Component {
    /*  constructor(){
         super(props);
         this.state = {
